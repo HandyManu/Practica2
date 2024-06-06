@@ -1,9 +1,13 @@
 package manuel.ortega.prueba2
 
 import RecicledViwHelper.Adapatador
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -25,32 +29,40 @@ class Activity_Registrarse : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val txtcorreo = findViewById<TextView>(R.id.txt_CorreoLogin)
-        val txtclave = findViewById<TextView>(R.id.txt_ClaveLogin)
-        val btnRegistrarse = findViewById<Button>(R.id.tv_Registrarse)
+        val txtCorreo = findViewById<EditText>(R.id.txt_correoRegistro)
+        val txtClave = findViewById<EditText>(R.id.txt_claveRegistro)
+        val btnRegistro = findViewById<Button>(R.id.btn_Registarse)
+        val imgRegistro =findViewById<ImageView>(R.id.img_regresar)
 
-        btnRegistrarse.setOnClickListener {
+        btnRegistro.setOnClickListener {
             GlobalScope.launch(Dispatchers.IO){
 
-                //guardar datos
+                val objConexion = claseConexion().cadenaConexion()
 
-                //crear un objeto de la clase conexion
-                val claseConexion=claseConexion().cadenaConexion()
+                val crearUsuario =  objConexion?.prepareStatement("INSERT IN TO Tb_usaurio (email , clave ) VALUES (?,?)")!!
 
-                //crar una variable que contenga un preparedstatement
-
-                val addUser=claseConexion?.prepareStatement("insert into Tb_usaurio (email,clave)values(?,?)")!!
-
-
-                addProducto.setString(1,txtcorreo.text.toString())
-                addProducto.setInt(2,txtclave.text.toString())
-                addProducto.executeUpdate()
-
-                val nuevosProductos=obtenerDatos()
-
+                crearUsuario.setString(1,txtCorreo.text.toString())
+                crearUsuario.setString(2,txtClave.text.toString())
+                crearUsuario.executeUpdate()
                 withContext(Dispatchers.Main){
-                    (rcvproductos.adapter as? Adapatador)?.actualizarLista(nuevosProductos)
+                    Toast.makeText(this@Activity_Registrarse,"usuario creado",Toast.LENGTH_SHORT).show()
+                    txtCorreo.setText("")
+                    txtClave.setText("")
                 }
             }
+        }
+
+        imgRegistro.setOnClickListener {
+            val activityLogin = Intent(this,Activity_Login::class.java)
+            startActivity(activityLogin)
+
+
+        }
+
+
+
+
+
+
     }
 }

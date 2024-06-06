@@ -28,12 +28,13 @@ class Activity_Login : AppCompatActivity() {
         val txtEmail = findViewById<TextView>(R.id.txt_CorreoLogin)
         val  txtClave = findViewById<TextView>(R.id.txt_ClaveLogin)
         val btnLogin = findViewById<Button>(R.id.btn_Ingresar)
+        val tvRegistrarse = findViewById<TextView>(R.id.tv_Registrarse)
 
         btnLogin.setOnClickListener{
             val mainActivity = Intent ( this,MainActivity :: class .java)
             GlobalScope.launch(Dispatchers.IO){
                 val objconexion = claseConexion().cadenaConexion()
-                val buscarUsuario = objconexion?.prepareStatement("select * from Tb_usaurio where email =? and clave =?")!!
+                val buscarUsuario = objconexion?.prepareStatement("select * from Tb_usaurio where email = ? and clave = ?")!!
                 buscarUsuario.setString(1,txtEmail.text.toString())
                 buscarUsuario.setString(2,txtClave.text.toString())
 
@@ -46,6 +47,13 @@ class Activity_Login : AppCompatActivity() {
                     println("No se encontro el usuario")
                 }
             }
+        }
+
+        tvRegistrarse.setOnClickListener {
+            val activityRegistrarse = Intent(this,Activity_Registrarse::class.java)
+            startActivity(activityRegistrarse)
+
+
         }
     }
 }

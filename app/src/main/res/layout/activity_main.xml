@@ -59,7 +59,7 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/editTextText7"
+        android:id="@+id/txt_numeroTiket"
         android:layout_width="107dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -78,8 +78,8 @@
         android:layout_marginTop="44dp"
         android:text="# de tiket"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText"
-        app:layout_constraintEnd_toStartOf="@+id/editTextText7"
+        app:layout_constraintBottom_toTopOf="@+id/txt_Titulo"
+        app:layout_constraintEnd_toStartOf="@+id/txt_numeroTiket"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView7"
@@ -99,12 +99,12 @@
         app:layout_constraintVertical_bias="0.071" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/txt_Titulo"
         android:layout_width="226dp"
         android:layout_height="47dp"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText2"
+        app:layout_constraintBottom_toTopOf="@+id/txt_Autor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.566"
         app:layout_constraintStart_toEndOf="@+id/textView7"
@@ -112,14 +112,14 @@
         app:layout_constraintVertical_bias="0.627" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/txt_Autor"
         android:layout_width="0dp"
         android:layout_height="42dp"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editTextDate2"
-        app:layout_constraintStart_toStartOf="@+id/editTextText3"
+        app:layout_constraintEnd_toEndOf="@+id/txt_FechaFinalizacion"
+        app:layout_constraintStart_toStartOf="@+id/txt_Descripcion"
         app:layout_constraintTop_toBottomOf="@+id/imageView7"
         app:layout_constraintVertical_bias="0.313" />
 
@@ -137,7 +137,7 @@
         app:layout_constraintVertical_bias="0.035" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/txt_Descripcion"
         android:layout_width="218dp"
         android:layout_height="39dp"
         android:ems="10"
@@ -146,7 +146,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.367"
         app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/txt_Titulo"
         app:layout_constraintVertical_bias="0.02" />
 
     <TextView
@@ -179,26 +179,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginTop="11dp"
-        android:layout_marginEnd="2dp"
         android:text="Fecha de creacion"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextDate"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText9" />
-
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.577" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_Correo" />
 
     <TextView
         android:id="@+id/textView14"
@@ -214,7 +198,7 @@
         app:layout_constraintVertical_bias="0.644" />
 
     <EditText
-        android:id="@+id/editTextText8"
+        android:id="@+id/txt_Estado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -234,12 +218,12 @@
         android:layout_marginEnd="7dp"
         android:text="Fecha de finalizacion"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextDate2"
+        app:layout_constraintEnd_toStartOf="@+id/txt_FechaFinalizacion"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextDate2" />
+        app:layout_constraintTop_toTopOf="@+id/txt_FechaFinalizacion" />
 
     <EditText
-        android:id="@+id/editTextText9"
+        android:id="@+id/txt_Correo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -252,7 +236,7 @@
         app:layout_constraintVertical_bias="0.511" />
 
     <EditText
-        android:id="@+id/editTextDate2"
+        android:id="@+id/txt_FechaFinalizacion"
         android:layout_width="175dp"
         android:layout_height="38dp"
         android:layout_marginEnd="22dp"
@@ -265,5 +249,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.747" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="409dp"
+        android:layout_height="173dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/txt_FechaCreacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.885"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.593" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
