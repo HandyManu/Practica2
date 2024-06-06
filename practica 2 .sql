@@ -20,3 +20,6 @@ ALTER TABLE Tb_tiket ADD UUID VARCHAR2(50)
 UPDATE Tb_Tickets SET uuid = SYS_GUID()
 
 SELECT * FROM Tb_Tickets
+
+drop table Tb_Tiket
+DROP table Tb_usaurio
