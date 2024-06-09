@@ -98,10 +98,10 @@ class MainActivity : AppCompatActivity() {
                 addtiket.setString(4,txtFechaFin.text.toString())
                 addtiket.executeUpdate()
 
-                val nuevosProductos=obtenerDatos()
+                val nuevosTikets=obtenerDatos()
 
                 withContext(Dispatchers.Main){
-                    (rcvproductos.adapter as? Adaptador)?.actualizarLista(nuevosProductos)
+                    (rcvproductos.adapter as? Adapatador)?.actualizarLista(nuevosTikets)
                 }
             }
 
@@ -113,4 +113,4 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-}
+}}

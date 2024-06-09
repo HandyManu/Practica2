@@ -34,7 +34,7 @@ class Activity_Login : AppCompatActivity() {
             val mainActivity = Intent ( this,MainActivity :: class .java)
             GlobalScope.launch(Dispatchers.IO){
                 val objconexion = claseConexion().cadenaConexion()
-                val buscarUsuario = objconexion?.prepareStatement("select * from Tb_usaurio where email = ? and clave = ?")!!
+                val buscarUsuario = objconexion?.prepareStatement("SELECT * FROM Tb_Usuarios WHERE email = ? and clave = ?")!!
                 buscarUsuario.setString(1,txtEmail.text.toString())
                 buscarUsuario.setString(2,txtClave.text.toString())
 

@@ -39,7 +39,7 @@ class Activity_Registrarse : AppCompatActivity() {
 
                 val objConexion = claseConexion().cadenaConexion()
 
-                val crearUsuario =  objConexion?.prepareStatement("INSERT IN TO Tb_usaurio (email , clave ) VALUES (?,?)")!!
+                val crearUsuario =  objConexion?.prepareStatement("INSERT INTO Tb_Usuarios (email , clave ) VALUES (?,?)")!!
 
                 crearUsuario.setString(1,txtCorreo.text.toString())
                 crearUsuario.setString(2,txtClave.text.toString())
