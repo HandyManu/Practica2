@@ -35,34 +35,25 @@ class Activity_Registrarse : AppCompatActivity() {
         val imgRegistro =findViewById<ImageView>(R.id.img_regresar)
 
         btnRegistro.setOnClickListener {
-            GlobalScope.launch(Dispatchers.IO){
-
+            GlobalScope.launch(Dispatchers.IO) {
                 val objConexion = claseConexion().cadenaConexion()
-
-                val crearUsuario =  objConexion?.prepareStatement("INSERT INTO Tb_Usuarios (email , clave ) VALUES (?,?)")!!
-
-                crearUsuario.setString(1,txtCorreo.text.toString())
-                crearUsuario.setString(2,txtClave.text.toString())
+                val crearUsuario = objConexion?.prepareStatement("INSERT INTO Tb_Usuarios(uuid, email, clave) VALUES (?, ?, ?)")!!
+                crearUsuario.setString(1, UUID.randomUUID().toString())
+                crearUsuario.setString(2, txtCorreo.text.toString())
+                crearUsuario.setString(3, txtClave.text.toString())
                 crearUsuario.executeUpdate()
-                withContext(Dispatchers.Main){
-                    Toast.makeText(this@Activity_Registrarse,"usuario creado",Toast.LENGTH_SHORT).show()
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@Activity_Registrarse, "Usuario creado", Toast.LENGTH_SHORT).show()
                     txtCorreo.setText("")
                     txtClave.setText("")
                 }
             }
-        }
 
+        }
         imgRegistro.setOnClickListener {
             val activityLogin = Intent(this,Activity_Login::class.java)
             startActivity(activityLogin)
-
-
         }
-
-
-
-
-
 
     }
 }

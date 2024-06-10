@@ -31,10 +31,10 @@ class Activity_Login : AppCompatActivity() {
         val tvRegistrarse = findViewById<TextView>(R.id.tv_Registrarse)
 
         btnLogin.setOnClickListener{
-            val mainActivity = Intent ( this,MainActivity :: class .java)
+            val mainActivity = Intent ( this,MainActivity::class.java)
             GlobalScope.launch(Dispatchers.IO){
                 val objconexion = claseConexion().cadenaConexion()
-                val buscarUsuario = objconexion?.prepareStatement("SELECT * FROM Tb_Usuarios WHERE email = ? and clave = ?")!!
+                val buscarUsuario = objconexion?.prepareStatement("SELECT * FROM Tb_Usuarios WHERE email = ? AND clave = ?")!!
                 buscarUsuario.setString(1,txtEmail.text.toString())
                 buscarUsuario.setString(2,txtClave.text.toString())
 
