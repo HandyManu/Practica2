@@ -118,7 +118,6 @@
         android:ems="10"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/txt_FechaFinalizacion"
         app:layout_constraintStart_toStartOf="@+id/txt_Descripcion"
         app:layout_constraintTop_toBottomOf="@+id/imageView7"
         app:layout_constraintVertical_bias="0.313" />
@@ -192,10 +191,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.306"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.644" />
+        app:layout_constraintVertical_bias="0.642" />
 
     <EditText
         android:id="@+id/txt_Estado"
@@ -214,13 +213,14 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="7dp"
         android:text="Fecha de finalizacion"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/txt_FechaFinalizacion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txt_FechaFinalizacion" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.732" />
 
     <EditText
         android:id="@+id/txt_Correo"
@@ -234,21 +234,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.511" />
-
-    <EditText
-        android:id="@+id/txt_FechaFinalizacion"
-        android:layout_width="175dp"
-        android:layout_height="38dp"
-        android:layout_marginEnd="22dp"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.969"
-        app:layout_constraintStart_toEndOf="@+id/textView15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.747" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvproductos"
@@ -285,5 +270,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.827" />
+
+    <EditText
+        android:id="@+id/txt_FechaFinalizacion"
+        android:layout_width="174dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.902"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.741" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

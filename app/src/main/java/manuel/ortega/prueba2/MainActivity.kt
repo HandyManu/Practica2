@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         fun obtenerDatos(): List<dataClassTikets> {
             val objConexion = claseConexion().cadenaConexion()
             val statement = objConexion?.createStatement()
-            val resultSet = statement?.executeQuery("select * from tb_tiket")!!
+            val resultSet = statement?.executeQuery("select * from tb_tikets")!!
 
             val tiketsList = mutableListOf<dataClassTikets>()
             while (resultSet.next()) {
@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
 
                 //crar una variable que contenga un preparedstatement
 
-                val addtiket=claseConexion?.prepareStatement("insert into tb_tiket(uuid ,numero,titulo,descripcion,autor,email,fechaCreacion,estado,fechaFin)values(?,?,?,?,?,?,?,?,?)")!!
+                val addtiket=claseConexion?.prepareStatement("insert into tb_tikets(uuid ,numero,titulo,descripcion,autor,email,fechaCreacion,estado,fechaFin)values(?,?,?,?,?,?,?,?,?)")!!
 
                 addtiket.setString(1,UUID.randomUUID().toString())
                 addtiket.setInt(2,txtNumTiket.text.toString().toInt())

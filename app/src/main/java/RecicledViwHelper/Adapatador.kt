@@ -47,7 +47,7 @@ class Adapatador (private var Datos: List<dataClassTikets>): RecyclerView.Adapte
             //crear un objeto e la clase conexion
             val objConexion=claseConexion().cadenaConexion()
 
-            val deleteTiket = objConexion?.prepareStatement("delete tb_tiket where uuid =?")!!
+            val deleteTiket = objConexion?.prepareStatement("delete tb_tikets where uuid =?")!!
             deleteTiket.setString( 1,uuid)
             deleteTiket.executeUpdate()
 
@@ -68,7 +68,7 @@ class Adapatador (private var Datos: List<dataClassTikets>): RecyclerView.Adapte
             val objConexion = claseConexion().cadenaConexion()
 
             //variable que contenga prepared sttement
-            val updateProducto = objConexion?.prepareStatement("update tb_Tiket set titulo = ? , descripcion = ?, autor = ?,email = ? , estado = ? where uuid = ?")!!
+            val updateProducto = objConexion?.prepareStatement("update tb_Tikets set titulo = ? , descripcion = ?, autor = ?,email = ? , estado = ? where uuid = ?")!!
 
             updateProducto.setString(1,titulo)
             updateProducto.setString(2,descripcion)
