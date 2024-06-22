@@ -52,8 +52,7 @@ class MainActivity : AppCompatActivity() {
 
             val tiketsList = mutableListOf<dataClassTikets>()
             while (resultSet.next()) {
-                val uuid = resultSet.getString("uuid")
-                val numero = resultSet.getInt("numero")
+                val uuid = resultSet.getString("uuidNumero")
                 val titulo = resultSet.getString("titulo")
                 val descripcion = resultSet.getString("descripcion")
                 val autor = resultSet.getString("autor")
@@ -61,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 val fechaCreacion = resultSet.getString("fechaCreacion")
                 val estado = resultSet.getString("estado")
                 val fechaFinalizacion = resultSet.getString("fechaFinalizacion")
-                val tiket = dataClassTikets(uuid, numero, titulo, descripcion, autor, email, fechaCreacion, estado, fechaFinalizacion)
+                val tiket = dataClassTikets(uuid, titulo, descripcion, autor, email, fechaCreacion, estado, fechaFinalizacion)
                 tiketsList.add(tiket)
             }
             return tiketsList
@@ -85,7 +84,7 @@ class MainActivity : AppCompatActivity() {
 
                 //crar una variable que contenga un preparedstatement
 
-                val addtiket=claseConexion?.prepareStatement("insert into tb_tikets(uuid ,numero,titulo,descripcion,autor,email,fechaCreacion,estado,fechaFin)values(?,?,?,?,?,?,?,?,?)")!!
+                val addtiket=claseConexion?.prepareStatement("insert into tb_tikets(uuidNumero,titulo,descripcion,autor,email,fechaCreacion,estado,fechaFinalizacion)values(?,?,?,?,?,?,?,?,?)")!!
 
                 addtiket.setString(1,UUID.randomUUID().toString())
                 addtiket.setInt(2,txtNumTiket.text.toString().toInt())

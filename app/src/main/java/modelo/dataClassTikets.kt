@@ -3,8 +3,7 @@ package modelo
 import android.provider.ContactsContract.CommonDataKinds.Email
 
 data class dataClassTikets(
-    val uuid:String,
-    val numero:Number,
+    val uuidNumero:String,
     var titulo:String,
     var descripcion:String,
     var autor : String,
