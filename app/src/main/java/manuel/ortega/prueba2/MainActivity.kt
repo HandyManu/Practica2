@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val txtNumTiket = findViewById<TextView>(R.id.txt_numeroTiket)
         val txtTitulo=findViewById<TextView>(R.id.txt_Titulo)
         val txtDescripcion = findViewById<TextView>(R.id.txt_Descripcion)
         val txtAutor=findViewById<TextView>(R.id.txt_Autor)
@@ -39,40 +38,6 @@ class MainActivity : AppCompatActivity() {
         val txtFechaFin = findViewById<TextView>(R.id.txt_FechaFinalizacion)
         val btnAgregar = findViewById<Button>(R.id.btnAdd)
 
-        val rcvproductos=findViewById<RecyclerView>(R.id.rcvproductos)
-
-        //asignar un layout al reciledview
-
-        rcvproductos.layoutManager= LinearLayoutManager(this)
-
-        fun obtenerDatos(): List<dataClassTikets> {
-            val objConexion = claseConexion().cadenaConexion()
-            val statement = objConexion?.createStatement()
-            val resultSet = statement?.executeQuery("select * from tb_tikets")!!
-
-            val tiketsList = mutableListOf<dataClassTikets>()
-            while (resultSet.next()) {
-                val uuid = resultSet.getString("uuidNumero")
-                val titulo = resultSet.getString("titulo")
-                val descripcion = resultSet.getString("descripcion")
-                val autor = resultSet.getString("autor")
-                val email = resultSet.getString("email")
-                val fechaCreacion = resultSet.getString("fechaCreacion")
-                val estado = resultSet.getString("estado")
-                val fechaFinalizacion = resultSet.getString("fechaFinalizacion")
-                val tiket = dataClassTikets(uuid, titulo, descripcion, autor, email, fechaCreacion, estado, fechaFinalizacion)
-                tiketsList.add(tiket)
-            }
-            return tiketsList
-        }
-
-        CoroutineScope ( Dispatchers.IO) .launch {
-            val tikets=obtenerDatos()
-            withContext(Dispatchers.Main){
-                val miAdapter = Adapatador(tikets)
-                rcvproductos.adapter=miAdapter
-            }
-        }
 
         btnAgregar.setOnClickListener {
             GlobalScope.launch(Dispatchers.IO){
@@ -87,7 +52,6 @@ class MainActivity : AppCompatActivity() {
                 val addtiket=claseConexion?.prepareStatement("insert into tb_tikets(uuidNumero,titulo,descripcion,autor,email,fechaCreacion,estado,fechaFinalizacion)values(?,?,?,?,?,?,?,?,?)")!!
 
                 addtiket.setString(1,UUID.randomUUID().toString())
-                addtiket.setInt(2,txtNumTiket.text.toString().toInt())
                 addtiket.setString(3,txtTitulo.text.toString())
                 addtiket.setString(4,txtDescripcion.text.toString())
                 addtiket.setString(5,txtAutor.text.toString())
@@ -97,11 +61,8 @@ class MainActivity : AppCompatActivity() {
                 addtiket.setString(4,txtFechaFin.text.toString())
                 addtiket.executeUpdate()
 
-                val nuevosTikets=obtenerDatos()
 
-                withContext(Dispatchers.Main){
-                    (rcvproductos.adapter as? Adapatador)?.actualizarLista(nuevosTikets)
-                }
+
             }
 
 
