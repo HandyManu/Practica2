@@ -1,6 +1,5 @@
 package RecicledViwHelper
 
-
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -15,6 +14,7 @@ import manuel.ortega.prueba2.ActivityDetalleTiket
 import manuel.ortega.prueba2.R
 import modelo.claseConexion
 import modelo.dataClassTikets
+
 
 class Adaptador(var Datos: List<dataClassTikets>) : RecyclerView.Adapter<ViewHolder>() {
 
@@ -35,7 +35,7 @@ class Adaptador(var Datos: List<dataClassTikets>) : RecyclerView.Adapter<ViewHol
 
         GlobalScope.launch(Dispatchers.IO) {
             val objConexion = claseConexion().cadenaConexion()
-            val deleteProducto = objConexion?.prepareStatement("DELETE FROM tb_tikets WHERE estado = ?")!!
+            val deleteProducto = objConexion?.prepareStatement("DELETE FROM tb_tikets WHERE uuidNumero = ?")!!
             deleteProducto.setString(1, estado)
             deleteProducto.executeUpdate()
             val commit = objConexion.prepareStatement("COMMIT")!!
@@ -49,7 +49,7 @@ class Adaptador(var Datos: List<dataClassTikets>) : RecyclerView.Adapter<ViewHol
     fun actualizarProducto(estado: String, uuid: String) {
         GlobalScope.launch(Dispatchers.IO) {
             val objConexion = claseConexion().cadenaConexion()
-            val updateProducto = objConexion?.prepareStatement("UPDATE tb_tikets SET estado = ? WHERE uuid = ?")!!
+            val updateProducto = objConexion?.prepareStatement("UPDATE tb_tikets SET estado = ? WHERE uuidNumero = ?")!!
             updateProducto.setString(1, estado)
             updateProducto.setString(2, uuid)
             updateProducto.executeUpdate()
@@ -105,7 +105,7 @@ class Adaptador(var Datos: List<dataClassTikets>) : RecyclerView.Adapter<ViewHol
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val pantallaDetalles = Intent(context, ActivityDetalleTiket::class.java)
-            pantallaDetalles.putExtra("uuid", item.uuidNumero)
+            pantallaDetalles.putExtra("uuidNumero", item.uuidNumero)
             pantallaDetalles.putExtra("estado", item.estado)
             context.startActivity(pantallaDetalles)
         }
@@ -113,11 +113,3 @@ class Adaptador(var Datos: List<dataClassTikets>) : RecyclerView.Adapter<ViewHol
 
     override fun getItemCount() = Datos.size
 }
-
-
-
-
-
-
-
-
