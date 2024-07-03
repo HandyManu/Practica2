@@ -36,6 +36,19 @@ class MainActivity : AppCompatActivity() {
         val txtEstado = findViewById<TextView>(R.id.txt_Estado)
         val txtFechaFin = findViewById<TextView>(R.id.txt_FechaFinalizacion)
         val btnAgregar = findViewById<Button>(R.id.btnAdd)
+
+        fun limpiar(){
+            txtTitulo.setText("")
+            txtDescripcion.setText("")
+            txtAutor.setText("")
+            txtEmail.setText("")
+            txtFechaCreacion.setText("")
+            txtEstado.setText("")
+            txtFechaFin.setText("")
+
+        }
+
+
         val rcvTikets = findViewById<RecyclerView>(R.id.rcvtikets)
 
         rcvTikets.layoutManager = LinearLayoutManager(this)
@@ -71,7 +84,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnAgregar.setOnClickListener {
-            GlobalScope.launch(Dispatchers.IO) {
+            CoroutineScope(Dispatchers.IO).launch {
                 val claseConexion = claseConexion().cadenaConexion()
                 val addTiket = claseConexion?.prepareStatement("INSERT INTO tb_tikets(uuidNumero, titulo, descripcion, autor, email, fechaCreacion, estado, fechaFinalizacion) VALUES(?, ?, ?, ?, ?, ?, ?, ?)")!!
 
